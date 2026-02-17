@@ -1,0 +1,39 @@
+stages:
+  - build
+
+variables:
+  GIT_LFS_SKIP_SMUDGE: "0"
+  REGISTRY_PATH: $CI_REGISTRY_IMAGE
+
+.build_template:
+  stage: build
+  image: quay.io/podman/stable
+  before_script:
+    - podman login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - podman build -t $IMAGE_NAME -f $DOCKERFILE_PATH .
+    - podman push $IMAGE_NAME
+
+build_smp:
+  extends: .build_template
+  variables:
+    IMAGE_NAME: $REGISTRY_PATH/smp:$CI_COMMIT_TAG
+    DOCKERFILE_PATH: smp/Dockerfile
+  only:
+    - /^v.*-smp$/
+
+build_lobby:
+  extends: .build_template
+  variables:
+    IMAGE_NAME: $REGISTRY_PATH/lobby:$CI_COMMIT_TAG
+    DOCKERFILE_PATH: lobby/Dockerfile
+  only:
+    - /^v.*-lobby$/
+
+build_scp:
+  extends: .build_template
+  variables:
+    IMAGE_NAME: $REGISTRY_PATH/scp:$CI_COMMIT_TAG
+    DOCKERFILE_PATH: scp/Dockerfile
+  only:
+    - /^v.*-scp$/
