@@ -1,20 +1,20 @@
-#Owner:
-#  tabprefix: "&0&l[&a&lOwner&0&l] &a"
-#  tagprefix: "&2&lOwner &a"
-Player:
-  tabprefix: "&0&l[&7&lPlayer&0&l] &3"
-  tagprefix: "&2&lPlayer &3"
-
- # default settings for all groups, all groups will take properties from this section unless player's primary group overrides a specific setting
+root:
+  tabprefix: "&4[#] &croot&f: "
+  tagprefix: "&4root &8| &f"
+sudoers:
+  tabprefix: "&6[%] &e@sudo&f: "
+  tagprefix: "&6sudo &8| &f"
+wheel:
+  tabprefix: "&b[!] &3wheel&f: "
+  tagprefix: "&3wheel &8| &f"
+chmod+x:
+  tabprefix: "&a[x] &2chmod&f: "
+  tagprefix: "&2chmod &8| &f"
+users:
+  tabprefix: "&7[$] &fuser&f: "
+  tagprefix: "&7user &8| &f"
+guest:
+  tabprefix: "&8[?] &8guest&f: "
+  tagprefix: "&8guest &8| &f"
 _DEFAULT_:
-  tabprefix: "%luckperms-prefix%"
-  tagprefix: "%luckperms-prefix%"
-  customtabname: "%player%"
-  tabsuffix: "%luckperms-suffix%"
-  tagsuffix: "%luckperms-suffix%"
-
-per-world:
-  world1:
-    Owner:
-      tabprefix: "&0&l[&a&lOwner&0&l] &a"
-      tagprefix: "&2&lOwner &a"
+  tabprefix: "&8[?] &8guest&f: "

@@ -10,24 +10,18 @@ header-footer:
         - "Test footer in world 'test'"
     default:
       header:
-        - "<#FFFFFF>&m                                                </#FFFF00>"
-        - "&3&lServer name"
-        - "&r&7&l>> %animation:Welcome%&3 &l%player%&7&l! &7&l<<"
-        - "&r&7Online players: &f%online%"
-        - "&6Online staff: &e%staffonline%"
-        - ""
+        - "&8&m      &2 [ Pal-Studio ] &8&m      "
+        - "&7Host: &fcutie@nixos &8| &7Kernel: &f1.21.4"
+        - "&7Status: &aOnline &8| &7Users: &f%online%"
       footer:
-        - "%animation:time%"
-        - "&2Ping: %ping%"
-        - "&7&l Used memory: %memory-used% MB / %memory-max% MB"
         - ""
-        - "&r&7Visit our webpage %animation:web%"
-        - "<#FFFFFF>&m                                                </#FFFF00>"
+        - "&8[ &fPing: &a%ping%ms &8] [ &fServer: &e%server% &8]"
+        - "&2$ &fstatus --system"
 
 # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Tablist-name-formatting
 tablist-name-formatting:
   enabled: true
-  disable-condition: '%world%=disabledworld'
+  disable-condition: "%world%=disabledworld"
 
 # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Nametags
 scoreboard-teams:
@@ -36,11 +30,11 @@ scoreboard-teams:
   invisible-nametags: false
   # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Sorting-players-in-tablist
   sorting-types:
-    - "GROUPS:owner,admin,mod,helper,builder,vip,default"
+    - "GROUPS:root,sudoers,wheel,chmod+x,users,guest"
     - "PLACEHOLDER_A_TO_Z:%player%"
   case-sensitive-sorting: true
   can-see-friendly-invisibles: false
-  disable-condition: '%world%=disabledworld'
+  disable-condition: "%world%=disabledworld"
 
 # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Playerlist-Objective
 playerlist-objective:
@@ -49,7 +43,7 @@ playerlist-objective:
   fancy-value: "&7Ping: %ping%"
   title: "TAB" # Only visible on Bedrock Edition
   render-type: INTEGER
-  disable-condition: '%world%=disabledworld'
+  disable-condition: "%world%=disabledworld"
 
 # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Belowname
 belowname-objective:
@@ -58,7 +52,7 @@ belowname-objective:
   fancy-value: "&c%health%"
   fancy-value-default: "NPC"
   title: "&cHealth"
-  disable-condition: '%world%=disabledworld'
+  disable-condition: "%world%=disabledworld"
 
 # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Spectator-fix
 prevent-spectator-effect:
@@ -123,29 +117,29 @@ layout:
   direction: COLUMNS
   default-skin: mineskin:37e93c8e12cd426cb28fce31969e0674
   enable-remaining-players-text: true
-  remaining-players-text: '... and %s more'
+  remaining-players-text: "... and %s more"
   empty-slot-ping-value: 1000
   layouts:
     default:
       slot-count: 80
       fixed-slots:
-        - '1|&3Website&f:'
-        - '2|&bmyserver.net'
-        - '3|&8&m                       '
-        - '4|&3Name&f:'
-        - '5|&b%player%'
-        - '7|&3Rank&f:'
-        - '8|Rank: %group%'
-        - '10|&3World&f:'
-        - '11|&b%world%'
-        - '13|&3Time&f:'
-        - '14|&b%time%'
-        - '21|&3Teamspeak&f:'
-        - '22|&bts.myserver.net'
-        - '23|&8&m                       '
-        - '41|&3Store&f:'
-        - '42|&bshop.myserver.net'
-        - '43|&8&m                       '
+        - "1|&3Website&f:"
+        - "2|&bmyserver.net"
+        - "3|&8&m                       "
+        - "4|&3Name&f:"
+        - "5|&b%player%"
+        - "7|&3Rank&f:"
+        - "8|Rank: %group%"
+        - "10|&3World&f:"
+        - "11|&b%world%"
+        - "13|&3Time&f:"
+        - "14|&b%time%"
+        - "21|&3Teamspeak&f:"
+        - "22|&bts.myserver.net"
+        - "23|&8&m                       "
+        - "41|&3Store&f:"
+        - "42|&bshop.myserver.net"
+        - "43|&8&m                       "
       groups:
         staff:
           display-condition: permission:tab.staff
@@ -214,11 +208,12 @@ assign-groups-by-permissions: false
 # if the option above is true, all groups are taken based on permissions and the one higher in this list is used as primary
 # Warning! This is not sorting list and has nothing to do with sorting players in tablist!
 primary-group-finding-list:
-  - Owner
-  - Admin
-  - Mod
-  - Helper
-  - default
+  - root
+  - sudoers
+  - wheel
+  - chmod+x
+  - users
+  - guest
 
 # Refresh interval (in milliseconds) of:
 # - Permission checks in conditions / sorting
@@ -250,10 +245,10 @@ proxy-support:
     # If enabled and compatible plugin is found, hook is enabled to work with proxied players
     name: RedisBungee
   redis:
-    url: 'redis://:password@localhost:6379/0'
+    url: "redis://:password@localhost:6379/0"
   rabbitmq:
-    exchange: 'plugin'
-    url: 'amqp://guest:guest@localhost:5672/%2F'
+    exchange: "plugin"
+    url: "amqp://guest:guest@localhost:5672/%2F"
 
 components:
   minimessage-support: true
