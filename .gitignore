@@ -1,13 +1,6 @@
 !.gitkeep
 
 server/smp/*
-
-!server/smp/plugins/
-
-server/smp/plugins/*
-
-!server/smp/plugins/EssentialsX-2.21.2.jar
-
 server/lobby/*
 server/towny/*
 server/velocity/*
