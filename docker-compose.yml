@@ -1,0 +1,38 @@
+services:
+  database:
+    image: docker.io/library/mariadb:latest
+    container_name: minecraft_db
+    environment:
+      MYSQL_ROOT_PASSWORD: '123'
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'minecraft_user'
+      MYSQL_PASSWORD: '456'
+    volumes:
+      - ./db_data:/var/lib/mysql
+  smp:
+    build:
+      context: .
+      dockerfile: Dockerfiles/smp.Dockerfile
+    container_name: smp_server
+    stdin_open: true # -i
+    tty: true # -t
+    deploy:
+      resources:
+        limits:
+          cpus: '3.0'
+          memory: 3G
+    volumes:
+      # Server files (your tree server/smp folder)
+      - ./server/smp:/data
+      # Shared plugins and configs
+      - ./shared/plugins:/shared/plugins:ro
+      - ./shared/configs:/shared/configs
+      # Script to Docker
+      - ./scripts/entrypoint.sh:/entrypoint.sh
+    environment:
+      - eula=TRUE
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:25565:25565/tcp"
+
+  # Other servers (lobby, towny) can be added in the same way.

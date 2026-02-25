@@ -1,0 +1,14 @@
+server/smp/*
+server/lobby/*
+server/towny/*
+server/velocity/*
+!.gitkeep
+
+db_data/*
+
+shared/configs/LuckPerms/*
+!shared/configs/LuckPerms/config.yml
+shared/configs/SkinsRestorer/*
+!shared/configs/SkinsRestorer/config.yml
+shared/configs/TAB/playerdata.yml
+shared/configs/TAB/skincache.yml
