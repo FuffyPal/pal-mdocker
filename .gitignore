@@ -15,6 +15,7 @@ db_data/*
 
 shared/configs/LuckPerms/*
 !shared/configs/LuckPerms/config.yml
+!shared/configs/LuckPerms/v0.1.json.gz
 shared/configs/SkinsRestorer/*
 !shared/configs/SkinsRestorer/config.yml
 shared/configs/TAB/playerdata.yml

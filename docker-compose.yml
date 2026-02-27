@@ -53,5 +53,6 @@ services:
     ports:
       - "0.0.0.0:25561:25565/tcp"
       - "0.0.0.0:8080:8080/tcp"
+      - "0.0.0.0:25565:25565/udp"
 
   # Other servers (lobby, towny) can be added in the same way.

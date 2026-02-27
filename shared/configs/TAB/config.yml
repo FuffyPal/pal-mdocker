@@ -2,21 +2,22 @@
 header-footer:
   enabled: true
   designs:
-    world-test:
-      display-condition: "%world%=test"
-      header:
-        - "Test header in world 'test'"
-      footer:
-        - "Test footer in world 'test'"
     default:
       header:
-        - "&8&m      &2 [ Pal-Studio ] &8&m      "
-        - "&7Host: &fcutie@nixos &8| &7Kernel: &f1.21.4"
-        - "&7Status: &aOnline &8| &7Users: &f%online%"
+        - ""
+        - "<#91628d>&l&m      &r <#c294bc>&lPAL-STUDIO <#91628d>&l&m      "
+        - "%condition:multi_lang_slogan%" 
+        - "&8&o%date% - %time%"
+        - ""
+        - "%condition:multi_lang_player_info%" 
+        - ""
       footer:
         - ""
-        - "&8[ &fPing: &a%ping%ms &8] [ &fServer: &e%server% &8]"
-        - "&2$ &fstatus --system"
+        - "<#91628d>» &fWeb: <#c294bc>links.fluffypal.me/@fluffypal"
+        - "<#91628d>» &fDiscord: <#c294bc>.gg/palstudio"
+        - ""
+        - "&8&m                                      "
+        - "%condition:multi_lang_online_count%"
 
 # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Tablist-name-formatting
 tablist-name-formatting:
@@ -80,22 +81,21 @@ scoreboard:
   delay-on-join-milliseconds: 500
   scoreboards:
     default:
-      title: "<#E0B11E>&lPAL-STUDIO</#FDB813>"
+      title: "<#91628d>&lP<#a2759d>&lA<#b387ad>&lL<#c294bc>&l-<#b387ad>&lS<#a2759d>&lT<#91628d>&lU<#80507d>&lD<#6f3f6d>&lI<#5e3b5a>&lO"
       lines:
         - "&7&m-------------------"
-        - "&8» &fSunucu Durumu"
-        - " <#E0B11E>┃ &7Aktif: &f%online%"
-        - " <#E0B11E>┃ &7Gecikme: &f%ping%ms"
+        - "&8» %condition:multi_lang_user_title%"
+        - " <#91628d>┃ &7%condition:multi_lang_name%: <#c294bc>%player%"
+        - " <#91628d>┃ &7%condition:multi_lang_rank%: &f%group%"
         - ""
-        - "&8» &fKarakter Bilgisi"
-        - " <#3498db>┃ &7Rütbe: &f%group%"
-        - " <#3498db>┃ &7Dünya: &f%world%"
+        - "&8» %condition:multi_lang_server_status%"
+        - " <#91628d>┃ &7%condition:multi_lang_active%: <#c294bc>%server_online% &8/ &7%server_max_players%"
+        - " <#91628d>┃ &7%condition:multi_lang_ping%: &f%ping%ms"
         - ""
-        - "&8» &fİstatistik"
-        - " <#e74c3c>┃ &7Saat: &f%time%"
-        - " <#e74c3c>┃ &7Tarih: &8%date%"
+        - "&8» %condition:multi_lang_economy%"
+        - " <#91628d>┃ &7%condition:multi_lang_balance%: <#a2759d>%vault_eco_balance_fixed% ⛁"
         - "&7&m-------------------"
-        - "     &eplay.palstudio.com"
+        - "    <#c294bc>links.fluffypal.me/@fluffypal"
 
 # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Layout
 layout:
@@ -172,11 +172,60 @@ placeholder-output-replacements:
 
 # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Conditional-placeholders
 conditions:
-  nick: # use it with %condition:nick%
+  # Slogan Kontrolü
+  multi_lang_slogan:
     conditions:
-      - "%player%=%essentials_nickname%"
-    true: "%player%"
-    false: "~%essentials_nickname%"
+      - "%player_locale%=tr_TR"
+    true: "&7Modern ve Yenilikçi Oyun Deneyimi"
+    false: "&7Modern and Innovative Gaming Experience"
+  
+  # Tab Oyuncu Bilgisi
+  multi_lang_player_info:
+    conditions:
+      - "%player_locale%=tr_TR"
+    true: "&7Oyuncu: <#c294bc>%player% &8| &7Gecikme: %ping%ms"
+    false: "&7Player: <#c294bc>%player% &8| &7Ping: %ping%ms"
+
+  # Aktif Kişi Sayısı
+  multi_lang_online_count:
+    conditions:
+      - "%player_locale%=tr_TR"
+    true: "&7Şu an <#91628d>%online% &7kişi pal-studio macerasında!"
+    false: "&7Currently <#91628d>%online% &7players in pal-studio adventure!"
+
+  # Scoreboard Başlıkları
+  multi_lang_user_title:
+    conditions: ["%player_locale%=tr_TR"]
+    true: "&fKullanıcı Bilgisi"
+    false: "&fUser Information"
+  multi_lang_name:
+    conditions: ["%player_locale%=tr_TR"]
+    true: "İsim"
+    false: "Name"
+  multi_lang_rank:
+    conditions: ["%player_locale%=tr_TR"]
+    true: "Rütbe"
+    false: "Rank"
+  multi_lang_server_status:
+    conditions: ["%player_locale%=tr_TR"]
+    true: "&fSunucu Durumu"
+    false: "&fServer Status"
+  multi_lang_active:
+    conditions: ["%player_locale%=tr_TR"]
+    true: "Aktif"
+    false: "Online"
+  multi_lang_ping:
+    conditions: ["%player_locale%=tr_TR"]
+    true: "Gecikme"
+    false: "Latency"
+  multi_lang_economy:
+    conditions: ["%player_locale%=tr_TR"]
+    true: "&fEkonomi"
+    false: "&fEconomy"
+  multi_lang_balance:
+    conditions: ["%player_locale%=tr_TR"]
+    true: "Bakiye"
+    false: "Balance"
 
 placeholder-refresh-intervals:
   default-refresh-interval: 500
