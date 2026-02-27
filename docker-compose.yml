@@ -9,24 +9,24 @@ services:
       MYSQL_PASSWORD: '456'
     volumes:
       - ./db_data:/var/lib/mysql
-  velocity:
-    build:
-      context: .
-      dockerfile: Dockerfiles/velocity.Dockerfile
-    container_name: velocity_proxy
-    stdin_open: true
-    tty: true
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 0.5G
-    ports:
-      - "0.0.0.0:25565:25565/tcp"
-    volumes:
-      - ./server/velocity:/data
-      - ./scripts/entrypoint_velocity.sh:/entrypoint_velocity.sh
-    restart: unless-stopped
+  # velocity:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfiles/velocity.Dockerfile
+  #   container_name: velocity_proxy
+  #   stdin_open: true
+  #   tty: true
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '0.5'
+  #         memory: 0.5G
+  #   ports:
+  #     - "0.0.0.0:25565:25565/tcp"
+  #   volumes:
+  #     - ./server/velocity:/data
+  #     - ./scripts/entrypoint_velocity.sh:/entrypoint_velocity.sh
+  #   restart: unless-stopped
   smp:
     build:
       context: .
@@ -52,6 +52,6 @@ services:
     restart: unless-stopped
     ports:
       - "0.0.0.0:25561:25565/tcp"
-      - "0.0.0.0:8123:8123/tcp"
+      - "0.0.0.0:8080:8080/tcp"
 
   # Other servers (lobby, towny) can be added in the same way.

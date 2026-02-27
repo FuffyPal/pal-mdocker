@@ -1585,7 +1585,7 @@ world-settings:
           only-babies: true
           chance: 0.05
           try-existing-chickens: true
-        aggressive-towards-villager-when-lagging: true
+        aggressive-towards-villager-when-lagging: false
         bypass-mob-griefing: false
         takes-damage-from-water: false
         always-drop-exp: false
@@ -1665,7 +1665,7 @@ world-settings:
       disable-drops-on-cramming-death: false
       milk-cures-bad-omen: true
       trident-loyalty-void-return-height: 0.0
-      entities-can-use-portals: true
+      entities-can-use-portals: false
       raid-cooldown-seconds: 0
       animal-breeding-cooldown-seconds: 0
       persistent-droppable-entity-display-names: true

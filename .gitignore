@@ -5,6 +5,7 @@ server/smp/*
 !server/smp/server-icon.png
 !server/smp/purpur.yml
 !server/smp/server.properties
+!server/smp/bukkit.yml
 
 server/lobby/*
 server/towny/*
