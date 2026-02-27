@@ -1,6 +1,11 @@
 !.gitkeep
 
 server/smp/*
+
+!server/smp/server-icon.png
+!server/smp/purpur.yml
+!server/smp/server.properties
+
 server/lobby/*
 server/towny/*
 server/velocity/*
